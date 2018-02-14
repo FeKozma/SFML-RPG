@@ -102,8 +102,7 @@ bool Bomb::updateBobm(float deltaTime, int **(&arr), const int & WIdTH, const in
 	//only call when placed = true
 
 	timeToExplode -= deltaTime;
-	if (-2 < timeToExplode && timeToExplode < 0)
-	{
+
 		bombExplode = true;
 		
 		timeTotalOnThisFrame += deltaTime;
@@ -139,9 +138,11 @@ bool Bomb::updateBobm(float deltaTime, int **(&arr), const int & WIdTH, const in
 				{
 					for (int y = 0; y < HIGHT; y++)
 					{
-						if (arr[x][y] == 10)
+						if (arr[x][y] == 8)
 						{
-							arr[x][y] = 11;
+							arr[x][y] = 2;
+							this->placed = false;
+							imageCount = -1;
 						}
 						else if (arr[x][y] == 6 + imageCount -1)
 						{
@@ -156,29 +157,9 @@ bool Bomb::updateBobm(float deltaTime, int **(&arr), const int & WIdTH, const in
 
 			}
 		}
-	}
-	else if (timeToExplode < -(timePerFrame * 6))
-	{
-		placed = false;
-		timeToExplode = 2;
-		timeTotalOnThisFrame = timePerFrame; //first time, there is a frame
-		imageCount = 0;
-								  //take away flames
-		for (int y = 0; y < WIdTH; y++)
-		{
-			for (int x = 0; x < HIGHT; x++)
-			{
-				if (arr[y][x] == 6)
-				{
-					if (rand() % 9)
-					{
-						arr[y][x] = 4;
-					}
-					arr[y][x] = 11;
-				}
-			}
-		}
-	}
+	
+
+	
 	
 	return bombExplode;
 }

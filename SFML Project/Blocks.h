@@ -30,16 +30,13 @@ private:
 	sf::Texture goFasterBlock;
 	sf::RectangleShape goFaster;
 	
-	sf::Texture flameBlock6;
-	sf::RectangleShape flame6;
-	sf::Texture flameBlock7;
-	sf::RectangleShape flame7;
-	sf::Texture flameBlock8;
-	sf::RectangleShape flame8;
-	sf::Texture flameBlock9;
-	sf::RectangleShape flame9;
-	sf::Texture flameBlock10;
-	sf::RectangleShape flame10;
+	sf::Texture thunder6Block;
+	sf::RectangleShape thunder6;
+	sf::Texture thunder7Block;
+	sf::RectangleShape thunder7;
+	sf::Texture thunder8Block;
+	sf::RectangleShape thunder8;
+
 
 	sf::SoundBuffer bufferPowerup;
 	sf::Sound powerupSound;
@@ -62,6 +59,8 @@ public:
 	int intersectRectangleCheck(const sf::Vector2f & box);
 	void update(float  deltaTime);
 	void draw(sf::RenderWindow & renderWindow);
+	int getHeight() const;
+	int getWidth() const;
 };
 
 #endif // !BLOCKS_H

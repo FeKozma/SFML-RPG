@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Blocks.h"
 #include "Text.h"
+#include "Inventory.h"
 #include <iostream>
 
 
@@ -16,6 +17,7 @@ private:
 	Player* player2;
 	Blocks gameArea;
 	Text score;
+	Inventory inv;
 
 	sf::Music music;
 

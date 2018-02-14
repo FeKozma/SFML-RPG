@@ -105,7 +105,7 @@ void Game::canPlayersMove(float deltaTime)
 
 		 tutchP1 = gameArea.intersectRectangleCheck(player1->getPosition());
 		
-		if (tutchP1 == 1 || tutchP1 == 2)
+		if (tutchP1 == 1 || tutchP1 == 2 || tutchP1 == 14 || tutchP1 == 15)
 		{
 			player1->moveRight(deltaTime);
 		}
@@ -114,7 +114,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		 tutchP1 = gameArea.intersectRectangleCheck(player1->getPosition());
 		
-		if (tutchP1 == 1 || tutchP1 == 2)
+		if (tutchP1 == 1 || tutchP1 == 2 || tutchP1 == 14 || tutchP1 == 15)
 		{
 			player1->moveLeft(deltaTime);
 		}
@@ -127,7 +127,7 @@ void Game::canPlayersMove(float deltaTime)
 		 tutchP1 = gameArea.intersectRectangleCheck(player1->getPosition());
 		
 		
-			if (tutchP1 == 1 || tutchP1 == 2)
+			if (tutchP1 == 1 || tutchP1 == 2 || tutchP1 == 14 || tutchP1 == 15)
 			{
 				player1->moveDown(deltaTime);
 			}
@@ -138,7 +138,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		tutchP1 = gameArea.intersectRectangleCheck(player1->getPosition());
 		
-			if (tutchP1 == 1 || tutchP1 == 2)
+			if (tutchP1 == 1 || tutchP1 == 2 || tutchP1 == 14 || tutchP1 == 15)
 			{
 				player1->moveUp(deltaTime);
 			}
@@ -160,7 +160,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		tutchP2 = gameArea.intersectRectangleCheck(player2->getPosition());
 		
-		if (tutchP2 == 1 || tutchP2 == 2)
+		if (tutchP2 == 1 || tutchP2 == 2 || tutchP2 == 14 || tutchP2 == 15)
 		{
 			player2->moveRight(deltaTime);
 		}
@@ -170,7 +170,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		tutchP2 = gameArea.intersectRectangleCheck(player2->getPosition());
 		
-		if (tutchP2 == 1 || tutchP2 == 2)
+		if (tutchP2 == 1 || tutchP2 == 2 || tutchP2 == 14 || tutchP2 == 15)
 		{
 			player2->moveDown(deltaTime);
 		}
@@ -179,7 +179,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		tutchP2 = gameArea.intersectRectangleCheck(player2->getPosition());
 
-		if (tutchP2 == 1 || tutchP2 == 2)
+		if (tutchP2 == 1 || tutchP2 == 2 || tutchP2 == 14 || tutchP2 == 15)
 		{
 			player2->moveUp(deltaTime);
 		}
@@ -188,7 +188,7 @@ void Game::canPlayersMove(float deltaTime)
 	{
 		tutchP2 = gameArea.intersectRectangleCheck(player2->getPosition());
 		
-		if (tutchP2 == 1 || tutchP2 == 2)
+		if (tutchP2 == 1 || tutchP2 == 2 || tutchP2 == 14 || tutchP2 == 15)
 		{
 			player2->moveLeft(deltaTime);
 		}
@@ -259,12 +259,15 @@ void Game::updateWindow(sf::RenderWindow &renderWindow, float deltaTime)
 	player2->update(deltaTime);
 	canPlayersMove(deltaTime);
 
+	
 	gameArea.update(deltaTime);
 	gameArea.draw(renderWindow);
 
 	player2->draw(renderWindow);
 	player1->draw(renderWindow);
 	
+	inv.draw(renderWindow, gameArea.getHeight(), gameArea.getWidth());
+
 
 	
 	score.update();

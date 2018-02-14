@@ -17,11 +17,10 @@ Blocks::Blocks()
 	goFaster.setSize(sf::Vector2f(64.0f, 64.0f));
 	weapon.setSize(sf::Vector2f(64.0f, 64.0f));
 	
-	flame6.setSize(sf::Vector2f(64.0f, 64.0f));
-	flame7.setSize(sf::Vector2f(64.0f, 64.0f));
-	flame8.setSize(sf::Vector2f(64.0f, 64.0f));
-	flame9.setSize(sf::Vector2f(64.0f, 64.0f));
-	flame10.setSize(sf::Vector2f(64.0f, 64.0f));
+	thunder6.setSize(sf::Vector2f(64.0f, 64.0f));
+	thunder7.setSize(sf::Vector2f(64.0f, 64.0f));
+	thunder8.setSize(sf::Vector2f(64.0f, 64.0f));
+
 
 
 	if (Grass1Block.loadFromFile("../Resources/block2.png"))
@@ -84,50 +83,34 @@ Blocks::Blocks()
 		std::cout << "did not load goFaster texture\n";
 	}
 	
-	if (flameBlock6.loadFromFile("../Resources/explosionBlock6.png"))
+	if (thunder6Block.loadFromFile("../Resources/thunder6.png"))
 	{
-		flame6.setTexture(&flameBlock6);
+		thunder6.setTexture(&thunder6Block);
 	}
 	else
 	{
-		std::cout << "did not load flame texture\n";
+		std::cout << "did not load thunder6 texture\n";
 	}
 
-	if (flameBlock7.loadFromFile("../Resources/explosionBlock7.png"))
+	if (thunder7Block.loadFromFile("../Resources/thunder7.png"))
 	{
-		flame7.setTexture(&flameBlock7);
+		thunder7.setTexture(&thunder7Block);
 	}
 	else
 	{
-		std::cout << "did not load flame texture\n";
+		std::cout << "did not load thunder7 texture\n";
 	}
 
-	if (flameBlock8.loadFromFile("../Resources/explosionBlock8.png"))
+	if (thunder8Block.loadFromFile("../Resources/thunder8.png"))
 	{
-		flame8.setTexture(&flameBlock8);
+		thunder8.setTexture(&thunder8Block);
 	}
 	else
 	{
-		std::cout << "did not load flame texture\n";
+		std::cout << "did not load thunder8 texture\n";
 	}
 
-	if (flameBlock9.loadFromFile("../Resources/explosionBlock9.png"))
-	{
-		flame9.setTexture(&flameBlock9);
-	}
-	else
-	{
-		std::cout << "did not load flame texture\n";
-	}
 
-	if (flameBlock10.loadFromFile("../Resources/explosionBlock10.png"))
-	{
-		flame10.setTexture(&flameBlock10);
-	}
-	else
-	{
-		std::cout << "did not load flame texture\n";
-	}
 
 	if (!bufferPowerup.loadFromFile("../Resources/PowerUp.wav"))
 	{
@@ -234,7 +217,7 @@ int Blocks::intersectRectangleCheck(const sf::Vector2f & box)
 					playPowerUpSound();
 				}
 			}
-			else if (typeBlock == 1)// && typeBlock != 2 && typeBlock != 5)
+			else if (typeBlock == 1 || typeBlock == 14 || typeBlock == 15)// && typeBlock != 2 && typeBlock != 5)
 			{
 				if (intersectRectangle(box.x + 1, box.y + 1, 64 - 5, 64 - 5, x * 64 + 1, y * 64 + 1, 64 -5, 64 - 5))
 				{
@@ -295,28 +278,18 @@ void Blocks::draw(sf::RenderWindow & renderWindow)
 				}
 				else if (typeBlock == 6)
 				{
-					flame6.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
-					renderWindow.draw(flame6);
+					thunder6.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+					renderWindow.draw(thunder6);
 				}
 				else if (typeBlock == 7)
 				{
-					flame7.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
-					renderWindow.draw(flame7);
+					thunder7.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+					renderWindow.draw(thunder7);
 				}
 				else if (typeBlock == 8)
 				{
-					flame8.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
-					renderWindow.draw(flame8);
-				}
-				else if (typeBlock == 9)
-				{
-					flame9.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
-					renderWindow.draw(flame9);
-				}
-				else if (typeBlock == 10)
-				{
-					flame10.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
-					renderWindow.draw(flame10);
+					thunder8.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+					renderWindow.draw(thunder8);
 				}
 				else if (typeBlock == 11)
 				{
@@ -351,5 +324,15 @@ void Blocks::draw(sf::RenderWindow & renderWindow)
 	{
 		bombP2.draw(renderWindow);
 	}
+}
+
+int Blocks::getHeight() const
+{
+	return this->HIGHT;
+}
+
+int Blocks::getWidth() const
+{
+	return this->WIDTH;
 }
 
