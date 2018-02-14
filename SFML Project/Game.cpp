@@ -30,7 +30,6 @@ void Game::run()
 
 	
 	sf::RenderWindow window(sf::VideoMode(gameArea.WIDTH*64, gameArea.HIGHT*64/*416, 288*/), "Bomberman");
-
 	while (window.isOpen())
 	{
 		deltaTime = clock.restart().asSeconds();
@@ -41,6 +40,14 @@ void Game::run()
 			{
 				window.close();
 			}
+
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+				sf::Vector2i position = sf::Mouse::getPosition(window);
+
+				std::cout << "left mouse button" << ": " << " x: " + std::to_string(position.x) << " y: " + std::to_string(position.y) << "\n";
+			}
+
 			if (sf::Event::KeyPressed)
 			{
 				keyEventCheck();
