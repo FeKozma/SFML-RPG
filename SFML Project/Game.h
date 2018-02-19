@@ -21,6 +21,8 @@ private:
 
 	sf::Music music;
 
+	bool skill1 = false;
+
 public:
 
 	Game();

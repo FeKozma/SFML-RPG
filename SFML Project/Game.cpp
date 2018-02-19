@@ -45,7 +45,12 @@ void Game::run()
 			{
 				sf::Vector2i position = sf::Mouse::getPosition(window);
 
-				std::cout << "left mouse button" << ": " << " x: " + std::to_string(position.x) << " y: " + std::to_string(position.y) << "\n";
+				std::cout << "mouse button" << ": " << " x: " + std::to_string(position.x) << " y: " + std::to_string(position.y) << "\n";
+			
+				if (position.x > 456 && position.x < 507 && position.y > 527 && position.y < 567)
+				{
+					skill1 = true;
+				}
 			}
 
 			if (sf::Event::KeyPressed)
@@ -273,6 +278,10 @@ void Game::updateWindow(sf::RenderWindow &renderWindow, float deltaTime)
 	player2->draw(renderWindow);
 	player1->draw(renderWindow);
 	
+	if (skill1)
+	{
+		skill1 = inv.updateSkill1(deltaTime);
+	}
 	inv.draw(renderWindow, gameArea.getHeight(), gameArea.getWidth());
 
 

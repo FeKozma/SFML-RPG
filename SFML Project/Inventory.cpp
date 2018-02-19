@@ -23,6 +23,24 @@ Inventory::Inventory()
 	{
 		std::cout << "did not load emptyBlock texture\n";
 	}
+
+	skillAnimationBlock.setSize(sf::Vector2f(64, 64));
+	if (skillAnimation.loadFromFile("../Resources/timer.png"))
+	{
+		skillAnimationBlock.setTexture(&skillAnimation);
+
+		currentFrame.width = 64;
+		currentFrame.height = 64;
+
+		currentFrame.left = 0;
+		currentFrame.top = 0;
+		skillAnimationBlock.setTextureRect(currentFrame);
+
+	}
+	else
+	{
+		std::cout << "did not load skillAnimation texture\n";
+	}
 }
 
 
@@ -34,18 +52,62 @@ void Inventory::draw(sf::RenderWindow & renderWindow, int height, int with)
 {
 
 
-	axBlock.setPosition(sf::Vector2f((float(((with / 2) - 2) * 64)), (float((height - 1) * 64))));
+	axBlock.setPosition(sf::Vector2f((float(((with / 2) - 3) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(axBlock);
+
+
+	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) - 2) * 64)), (float((height - 1) * 64))));
+	renderWindow.draw(emptyBlock);
 
 	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) - 1) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(emptyBlock);
 
-	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) - 0) * 64)), (float((height - 1) * 64))));
-	renderWindow.draw(emptyBlock);
+	//emptyBlock.setPosition(sf::Vector2f((float(((with / 2) - 0) * 64)), (float((height - 1) * 64))));
+	//renderWindow.draw(emptyBlock);
 
 	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) + 1) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(emptyBlock);
 
 	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) + 2) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(emptyBlock);
+
+	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) + 3) * 64)), (float((height - 1) * 64))));
+	renderWindow.draw(emptyBlock);
+
+	if (skill1 != -1)
+	{
+		currentFrame.left = this->skill1 * 64;
+		skillAnimationBlock.setTextureRect(currentFrame);
+
+		skillAnimationBlock.setPosition(sf::Vector2f((float(((with / 2) + 1) * 64)), (float((height - 1) * 64))));
+		renderWindow.draw(skillAnimationBlock);
+	}
 }
+
+int Inventory::updateSkill1(float deltaTime)
+{
+	timeOnThisFrame -= deltaTime;
+
+	//std::cout << std::to_string(deltaTime) + '\n';
+	//std::cout << "timeOnThisFrame: " + std::to_string(timeOnThisFrame) + '\n';
+	if (timeOnThisFrame < 0)
+	{
+		if (skill1 < 3)
+		{
+			skill1++;
+			timeOnThisFrame += timePerFrame;
+
+			return true;
+		}
+		else
+		{
+			skill1 = -1;
+			timeOnThisFrame = 0;
+
+			return false;
+		}
+	}
+
+	
+}
+
