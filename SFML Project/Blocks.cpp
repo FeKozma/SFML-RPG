@@ -265,21 +265,34 @@ void Blocks::draw(sf::RenderWindow & renderWindow)
 				{
 					stone.setOrigin(sf::Vector2f(64 / 2, 64 / 2));
 					stone.setRotation(0);
-					if (x == 0 && y != HIGHT -1)
+					if (x == 0 && y != HIGHT -1 && y != 0)
 					{
 						stone.setRotation(90);
+						grass1.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+						renderWindow.draw(grass1);
+						stone.setPosition(sf::Vector2f((float((x * 64) + 16)), (float((y * 64) + 32))));
 
 					}
-					if (y == 0)
+					else if (y == 0)
 					{
 						stone.setRotation(180);
-					}
-					if (x == WIDTH-1 && y != 0 && y != HIGHT -1)
-					{
-						stone.setRotation(180 + 90);
+	
+						stone.setPosition(sf::Vector2f((float((x * 64) + 32)), (float((y * 64) + 32))));
 
 					}
-					stone.setPosition(sf::Vector2f((float((x * 64)+32)), (float((y * 64) + 32))));
+					else if (x == WIDTH-1 && y != 0 && y != HIGHT -1)
+					{
+						grass1.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+						renderWindow.draw(grass1);
+						stone.setRotation(180 + 90);
+						stone.setPosition(sf::Vector2f((float((x * 64) + 48)), (float((y * 64) + 32))));
+
+
+					}
+					else
+					{
+						stone.setPosition(sf::Vector2f((float((x * 64) + 32)), (float((y * 64) + 32))));
+					}
 					renderWindow.draw(stone);
 				}
 				else if (typeBlock == 3)

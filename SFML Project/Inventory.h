@@ -14,6 +14,9 @@ private:
 	sf::RectangleShape skillAnimationBlock;
 	sf::IntRect currentFrame;
 
+	sf::Texture energy;
+	sf::RectangleShape energyBlock;
+
 
 	int skill1 = -1;
 

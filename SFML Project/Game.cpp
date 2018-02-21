@@ -29,7 +29,7 @@ void Game::run()
 	sf::Clock clock;
 
 	
-	sf::RenderWindow window(sf::VideoMode(gameArea.WIDTH*64, gameArea.HIGHT*64/*416, 288*/), "Bomberman");
+	sf::RenderWindow window(sf::VideoMode(gameArea.WIDTH*64, gameArea.HIGHT*64/*416, 288*/), "!-!");
 	while (window.isOpen())
 	{
 		deltaTime = clock.restart().asSeconds();
@@ -59,7 +59,10 @@ void Game::run()
 			}
 			if (sf::Event::KeyReleased)
 			{
-				keyEventCheck();
+				if (keyEventCheck() == 1)
+				{
+					skill1 = true;
+				}
 			}
 			
 				
@@ -73,9 +76,10 @@ void Game::run()
 		
 	}
 }
-
-void Game::keyEventCheck()
+// ret 1 for spacebar
+int Game::keyEventCheck()
 {
+	int ret = 0;
 	//player1
 	player1->moveLeft(sf::Keyboard::isKeyPressed(sf::Keyboard::A));
 	player1->moveUp(sf::Keyboard::isKeyPressed(sf::Keyboard::W));
@@ -90,6 +94,7 @@ void Game::keyEventCheck()
 		position.y = (position.y + 16) / 64;
 		gameArea.putDownBomb(position.x, position.y, 0);
 		//plant bomb
+		ret = 1;
 	}
 
 	//player 2
@@ -105,6 +110,8 @@ void Game::keyEventCheck()
 		gameArea.putDownBomb(position.x, position.y, 1);
 		//plant bomb
 	}
+
+	return ret;
 }
 
 void Game::canPlayersMove(float deltaTime)
@@ -284,7 +291,7 @@ void Game::updateWindow(sf::RenderWindow &renderWindow, float deltaTime)
 	}
 	inv.draw(renderWindow, gameArea.getHeight(), gameArea.getWidth());
 
-
+	menRow.draw(renderWindow);
 	
 	score.update();
 	score.draw(renderWindow);

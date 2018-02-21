@@ -10,8 +10,8 @@
 class Blocks
 {
 public: //tvär-tom
-	static const int WIDTH = 13;
-	static const int HIGHT = 9;
+	static const int WIDTH = 16;
+	static const int HIGHT = 11;
 private:
 	int **gameArea;
 	sf::Texture Grass1Block;

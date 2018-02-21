@@ -4,6 +4,7 @@
 #include "Blocks.h"
 #include "Text.h"
 #include "Inventory.h"
+#include "MenuRow.h"
 #include <iostream>
 
 
@@ -18,6 +19,8 @@ private:
 	Blocks gameArea;
 	Text score;
 	Inventory inv;
+	MenuRow menRow;
+	
 
 	sf::Music music;
 
@@ -30,7 +33,7 @@ public:
 	void run();
 
 
-	void keyEventCheck();
+	int keyEventCheck();
 	void canPlayersMove(float deltaTime);
 	void isPlayerInExplosion();
 

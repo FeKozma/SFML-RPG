@@ -41,6 +41,12 @@ Inventory::Inventory()
 	{
 		std::cout << "did not load skillAnimation texture\n";
 	}
+
+	energyBlock.setSize(sf::Vector2f(64, 64));
+	if (energy.loadFromFile("../Resources/explosionBlock6.png"))
+	{
+		energyBlock.setTexture(&energy);
+	}
 }
 
 
@@ -65,8 +71,14 @@ void Inventory::draw(sf::RenderWindow & renderWindow, int height, int with)
 	//emptyBlock.setPosition(sf::Vector2f((float(((with / 2) - 0) * 64)), (float((height - 1) * 64))));
 	//renderWindow.draw(emptyBlock);
 
+
+
+
 	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) + 1) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(emptyBlock);
+
+	energyBlock.setPosition(sf::Vector2f((float(((with / 2) + 1) * 64)), (float((height - 1) * 64))));
+	renderWindow.draw(energyBlock);
 
 	emptyBlock.setPosition(sf::Vector2f((float(((with / 2) + 2) * 64)), (float((height - 1) * 64))));
 	renderWindow.draw(emptyBlock);
