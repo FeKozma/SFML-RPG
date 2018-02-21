@@ -272,6 +272,7 @@ void Game::P2_IncreasBombSize()
 
 void Game::updateWindow(sf::RenderWindow &renderWindow, float deltaTime)
 {
+	
 	renderWindow.clear();
 		
 	player1->update(deltaTime);

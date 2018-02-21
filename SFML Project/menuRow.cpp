@@ -32,5 +32,5 @@ void MenuRow::draw(sf::RenderWindow & renderWindow)
 	renderWindow.draw(menuBlock);
 
 	statBlock.setPosition(sf::Vector2f(64 * 2, 0));
-	renderWindow.draw(statBlock);
+	renderWindow.draw(statBlock); 
 }
