@@ -263,7 +263,23 @@ void Blocks::draw(sf::RenderWindow & renderWindow)
 				}
 				else if(typeBlock == 1)
 				{
-					stone.setPosition(sf::Vector2f((float(x * 64)), (float(y * 64))));
+					stone.setOrigin(sf::Vector2f(64 / 2, 64 / 2));
+					stone.setRotation(0);
+					if (x == 0 && y != HIGHT -1)
+					{
+						stone.setRotation(90);
+
+					}
+					if (y == 0)
+					{
+						stone.setRotation(180);
+					}
+					if (x == WIDTH-1 && y != 0 && y != HIGHT -1)
+					{
+						stone.setRotation(180 + 90);
+
+					}
+					stone.setPosition(sf::Vector2f((float((x * 64)+32)), (float((y * 64) + 32))));
 					renderWindow.draw(stone);
 				}
 				else if (typeBlock == 3)
